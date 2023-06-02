@@ -6,63 +6,24 @@ int main() {
 
     try {
         
-        Stack<int> myStack;
-        Stack<int>::iterator it = myStack.begin();
+        int dataType;
+        cout << "Введіть тип даних стеку (1. int, 2. double, 3. string): ";
+        cin >> dataType;
         
-        int choice, value;
-
-        do {
-            cout << "--------------------------------------" << endl;
-            cout << "1. Перевірка стеку на пустоту" << endl;
-            cout << "2. Очищення стеку" << endl;
-            cout << "3. Видалення елемента з вершини стеку" << endl;
-            cout << "4. Включення нового елемента у стек" << endl;
-            cout << "5. Виведення вмісту стеку" << endl;
-            cout << "0. Вихід" << endl;
-            cout << "Ваш вибір: ";
-            cin >> choice;
-            cout << "--------------------------------------" << endl;
-
-            switch (choice) {
-            case 1:
-                if (myStack.empty()) {
-                    cout << "Стек порожній." << endl;
-                }
-                else {
-                    cout << "Стек не порожній." << endl;
-                }
-                break;
-
-            case 2:
-                myStack.clear();
-                cout << "Стек очищений." << endl;
-                break;
-
-            case 3:
-                myStack.pop();
-                cout << "Елемент видалений з вершини стеку." << endl;
-                break;
-
-            case 4:
-                cout << "Введіть значення нового елемента: ";
-                cin >> value;
-                myStack.push(value);
-                cout << "Елемент включений у стек." << endl;
-                break;
-
-            case 5:
-                cout << "Вміст стеку: ";
-                myStack.show();
-                break;
-            case 0:
-                cout << "Програма завершена." << endl;
-                break;
-            default:
-                cout << "Невірний вибір. Спробуйте ще раз." << endl;
-                break;
-            }
-
-        } while (choice != 0);
+        switch (dataType) {
+        case 1:
+            processStack<int>();
+            break;
+        case 2:
+            processStack<double>();
+            break;
+        case 3:
+            processStack<string>();
+            break;
+        default:
+            cout << "Введено некоректне значення." << endl;
+            break;
+        }
     }
     catch (const exception& e) {
         cout << "Сталася помилка: " << e.what() << endl;

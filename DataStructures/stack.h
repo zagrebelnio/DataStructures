@@ -40,3 +40,6 @@ public:
     Stack<T>::iterator begin();
     Stack<T>::iterator end();
 };
+
+template <typename T>
+void processStack();
