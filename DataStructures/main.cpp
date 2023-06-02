@@ -6,8 +6,8 @@ int main() {
 
     try {
         
-        stack<int> myStack;
-        stack<int>::iterator it = myStack.begin();
+        Stack<int> myStack;
+        Stack<int>::iterator it = myStack.begin();
         
         int choice, value;
 
@@ -52,10 +52,7 @@ int main() {
 
             case 5:
                 cout << "Вміст стеку: ";
-                for (stack<int>::iterator it = myStack.begin(); it != myStack.end(); ++it) {
-                    cout << *it << " ";
-                }
-                cout << endl;
+                myStack.show();
                 break;
             case 0:
                 cout << "Програма завершена." << endl;

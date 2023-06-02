@@ -1,22 +1,22 @@
 #pragma once
 #include <iostream>
-#include <memory>
 #include <stdexcept>
 #include <Windows.h>
 
 using namespace std;
 
 template<class T>
-class stack {
-    struct Node {
+class Stack {
+    class Node {
+    public:
         T data;
-        shared_ptr<Node> next;
-        explicit Node(T _data) : data(_data) {}
+        Node* next;
+        explicit Node(T _data) : data(_data), next(nullptr) {}
         ~Node() {
-            next.reset();
+            delete next;
         }
     };
-    shared_ptr<Node> top;
+    Node* top;
     unsigned int size;
 public:
     class iterator {
@@ -25,21 +25,18 @@ public:
         iterator() = default;
         explicit iterator(Node* ptr) : curr_ptr(ptr) {}
         iterator& operator++();
-        const iterator operator++(int);
         T operator*();
         T* operator->();
-        bool operator==(const iterator&);
         bool operator!=(const iterator&);
 
-        friend class stack<T>;
+        friend class Stack<T>;
     };
-    stack();
+    Stack();
     void push(T);
     void pop();
     void clear();
     bool empty();
-    const unsigned int get_size() const;
-    const T& peek();
-    stack<T>::iterator begin();
-    stack<T>::iterator end();
+    void show();
+    Stack<T>::iterator begin();
+    Stack<T>::iterator end();
 };
